@@ -61,18 +61,18 @@ namespace calculator_uppgift
                         Environment.Exit(0);
                         break;
                     case "+":
-                       AddNumbers(Value1,Value2);
+                        Console.WriteLine("Result is = {0:0.00}", AddNumbers(Value1, Value2));
                         break;
                     case "-":
-                        SubtractNumbers(Value1, Value2);
+                        Console.WriteLine("Result is = {0:0.00}", SubtractNumbers(Value1, Value2));
                         break;
 
                     case "*":
-                       MultiplyNumbers(Value1, Value2);
+                        Console.WriteLine("Result is = {0:0.00}", MultiplyNumbers(Value1, Value2));
                         break;
 
                     case "/":
-                        DivideNumbers(Value1, Value2);
+                        Console.WriteLine("Result is = {0:0.00}", DivideNumbers(Value1, Value2));
                         break;
                     case "c":
                         Clearhistory();
@@ -86,33 +86,33 @@ namespace calculator_uppgift
 
         }
                        
-        public static void AddNumbers(double a, double b)
+        public static double AddNumbers(double a, double b)
         {
-            Console.WriteLine ("Result is = {0:0.00}", a + b );
+            return (a + b);
+            //Console.WriteLine ("Result is = {0:0.00}", a + b );
             
         }
         
-        public static void SubtractNumbers(double a, double b)
+        public static double SubtractNumbers(double a, double b)
         {
-            
-            Console.WriteLine("Result is = {0:0.00}", a - b);
+            return (a - b);
         }
 
-        public static void MultiplyNumbers(double a, double b)
+        public static double MultiplyNumbers(double a, double b)
         {
-            
-            Console.WriteLine("Result is = {0:0.00}", a * b);
+            return (a * b);
         }
 
-        public static void DivideNumbers(double a, double b)
+        public static double DivideNumbers(double a, double b)
         {
             if(a == 0 || b == 0)
             {
-                Console.WriteLine("OBS: Division with Zero can not be performed");
+               Console.WriteLine("OBS: Division with Zero can not be performed");
+                return 0.00;
             }
             else
             {
-                Console.WriteLine("Result is = {0:0.00}", a / b);
+                return (a / b);
             }
             
         }
