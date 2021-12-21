@@ -13,6 +13,8 @@ namespace calculator_uppgift
             double Value1 = 0;
             double Value2 = 0;
             string Val = "";
+            bool equationInput = false;
+            double[] InputArray = new double[] { };
             Console.WriteLine("Välja e - Stäng program");
             Console.WriteLine("Välja operation från +, -, * , /");
             Console.WriteLine("**********************************");
@@ -32,8 +34,6 @@ namespace calculator_uppgift
                 }
                 try
                 {
-                    Console.Write("Enter the first value: ");
-                    Value1 = Convert.ToDouble(Console.ReadLine());
                     Console.Write("Operation to perform: ");
                     Val = Console.ReadLine().Trim();
 
@@ -45,8 +45,41 @@ namespace calculator_uppgift
                     {
                         Environment.Exit(0);
                     }
-                    Console.Write("Enter the second value: ");
-                    Value2 = Convert.ToDouble(Console.ReadLine());
+                    else if(Val == "+" || Val == "-")
+                    {
+                        Console.Write("press 2 to perform operation on 2 values or press 3 to perform on more than 2 values: ");
+                        bool correctInput = false;
+                        while (!(correctInput))
+                        {
+                            if (Convert.ToInt32(Console.ReadLine()) == 3)
+                            {
+                                equationInput = true;
+                                Console.Write("Please enter all values with komma separated as a,b,c,d: ");
+                                string InputString = Console.ReadLine().Trim();
+                                InputArray = Array.ConvertAll(InputString.Split(','), Double.Parse);
+                                correctInput = true;
+                            }
+                            else
+                            {
+                                Console.Write("Enter the first value: ");
+                                Value1 = Convert.ToDouble(Console.ReadLine());
+
+                                Console.Write("Enter the second value: ");
+                                Value2 = Convert.ToDouble(Console.ReadLine());
+                                correctInput = true;
+                            }
+                        }
+                        
+                    }
+                    else
+                    {
+                        Console.Write("Enter the first value: ");
+                        Value1 = Convert.ToDouble(Console.ReadLine());
+
+                        Console.Write("Enter the second value: ");
+                        Value2 = Convert.ToDouble(Console.ReadLine());
+                    }
+                                       
                 }
                 catch (Exception e)
                 {
@@ -61,10 +94,25 @@ namespace calculator_uppgift
                         Environment.Exit(0);
                         break;
                     case "+":
-                        Console.WriteLine("Result is = {0:0.00}", AddNumbers(Value1, Value2));
+                        if(equationInput)
+                        {
+                            Console.WriteLine("Result is = {0:0.00}", AddNumbers(InputArray));
+                        }
+                        else
+                        {
+                            Console.WriteLine("Result is = {0:0.00}", AddNumbers(Value1, Value2));
+                        }
+                        
                         break;
                     case "-":
-                        Console.WriteLine("Result is = {0:0.00}", SubtractNumbers(Value1, Value2));
+                        if (equationInput)
+                        {
+                            Console.WriteLine("Result is = {0:0.00}", SubtractNumbers(InputArray));
+                        }
+                        else
+                        {
+                            Console.WriteLine("Result is = {0:0.00}", SubtractNumbers(Value1, Value2));
+                        }
                         break;
 
                     case "*":
@@ -92,10 +140,29 @@ namespace calculator_uppgift
             //Console.WriteLine ("Result is = {0:0.00}", a + b );
             
         }
-        
+        public static double AddNumbers(double [] InputArray)
+        {
+           double result = 0;
+            foreach (double item in InputArray)
+            {
+                result += item;
+            }
+            return result;
+           
+        }
+
         public static double SubtractNumbers(double a, double b)
         {
             return (a - b);
+        }
+        public static double SubtractNumbers(double[] InputArray)
+        {
+            double result = 0;
+            foreach (double item in InputArray)
+            {
+                result -= item;
+            }
+            return result;
         }
 
         public static double MultiplyNumbers(double a, double b)
