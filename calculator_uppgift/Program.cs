@@ -48,10 +48,11 @@ namespace calculator_uppgift
                     else if(Val == "+" || Val == "-")
                     {
                         Console.Write("press 2 to perform operation on 2 values or press 3 to perform on more than 2 values: ");
+                        int ValueSelected = Convert.ToInt32(Console.ReadLine());
                         bool correctInput = false;
                         while (!(correctInput))
                         {
-                            if (Convert.ToInt32(Console.ReadLine()) == 3)
+                            if (ValueSelected == 3)
                             {
                                 equationInput = true;
                                 Console.Write("Please enter all values with komma separated as a,b,c,d: ");
