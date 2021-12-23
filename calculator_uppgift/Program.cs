@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using static calculator_uppgift.MathFunctions;
 
 namespace calculator_uppgift
 {
@@ -121,7 +122,16 @@ namespace calculator_uppgift
                         break;
 
                     case "/":
-                        Console.WriteLine("Result is = {0:0.00}", DivideNumbers(Value1, Value2));
+                        if(Value1 == 0 || Value2 == 0)
+                        {
+                            Console.WriteLine("Division with 0 is not allowed to perform:: select the correct input: ");
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Result is = {0:0.00}", DivideNumbers(Value1, Value2));
+                        }
+                        
                         break;
                     case "c":
                         Clearhistory();
@@ -135,72 +145,5 @@ namespace calculator_uppgift
 
         }
                        
-        public static double AddNumbers(double a, double b)
-        {
-            return (a + b);
-            //Console.WriteLine ("Result is = {0:0.00}", a + b );
-            
-        }
-        public static double AddNumbers(double [] InputArray)
-        {
-           double result = 0;
-            foreach (double item in InputArray)
-            {
-                result += item;
-            }
-            return result;
-           
-        }
-
-        public static double SubtractNumbers(double a, double b)
-        {
-            return (a - b);
-        }
-        public static double SubtractNumbers(double[] InputArray)
-        {
-            double result = 0;
-            foreach (double item in InputArray)
-            {
-                result -= item;
-            }
-            return result;
-        }
-
-        public static double MultiplyNumbers(double a, double b)
-        {
-            return (a * b);
-        }
-
-        public static double DivideNumbers(double a, double b)
-        {
-            if(a == 0 || b == 0)
-            {
-               Console.WriteLine("OBS: Division with Zero can not be performed");
-                return 0.00;
-            }
-            else
-            {
-                return (a / b);
-            }
-            
-        }
-
-        static void Clearhistory ()  //function to clear previous calculation in console window
-        {
-            int currentLineCursor = Console.CursorTop;
-            Console.SetCursorPosition(0, 3);
-
-            //Console.SetCursorPosition(0, Console.CursorTop);
-            for (int i = 3; i <= currentLineCursor; i++)
-            {
-                for (int j = 0; j < Console.WindowWidth; j++)
-                {
-                    Console.Write(new string(' ', Console.WindowWidth));
-                }
-            }
-            Console.SetCursorPosition(0, 3);
-            Console.SetWindowPosition(0, 0);
-
-        }
     }
 }
