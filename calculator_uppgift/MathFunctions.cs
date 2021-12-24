@@ -9,7 +9,7 @@ namespace calculator_uppgift
     {
         public static double AddNumbers(double a, double b)
         {
-            return (a + b);
+            return Math.Round((a + b),2);
             //Console.WriteLine ("Result is = {0:0.00}", a + b );
 
         }
@@ -20,13 +20,13 @@ namespace calculator_uppgift
             {
                 result += item;
             }
-            return result;
+            return Math.Round((result),2);
 
         }
 
         public static double SubtractNumbers(double a, double b)
         {
-            return (a - b);
+            return Math.Round((a - b),2);
         }
         public static double SubtractNumbers(double[] InputArray)
         {
@@ -35,12 +35,12 @@ namespace calculator_uppgift
             {
                 result -= item;
             }
-            return result;
+            return Math.Round((result),2);
         }
 
         public static double MultiplyNumbers(double a, double b)
         {
-            return (a * b);
+            return Math.Round((a * b),2);
         }
 
         public static double DivideNumbers(double a, double b)
@@ -52,7 +52,7 @@ namespace calculator_uppgift
             }
             else
             {
-                return (a / b);
+                return Math.Round((a / b),2);
             }
 
         }
