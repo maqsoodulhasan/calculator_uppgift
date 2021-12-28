@@ -49,13 +49,19 @@ namespace calculator_uppgift_testing
         }
 
         [Theory]
-        [InlineData(-135, new double[] { 45, 45, 45 })]
-        [InlineData(-45, new double[] { 45, 45, -45 })]
-        [InlineData(45, new double[] { 45, -45, -45 })]
-        [InlineData(135, new double[] { -45, -45, -45 })]
-        [InlineData(-90, new double[] { 45, 45, 0 })]
-        [InlineData(-89, new double[] { 45, -1, 45 })]
+        [InlineData(-45, new double[] { 45, 45, 45 })]
+        [InlineData(45, new double[] { 45, 45, -45 })]
+        [InlineData(135, new double[] { 45, -45, -45 })]
+        [InlineData(45, new double[] { -45, -45, -45 })]
+        [InlineData(0, new double[] { 45, 45, 0 })]
+        [InlineData(1, new double[] { 45, -1, 45 })]
+        [InlineData(-1, new double[] { 45, 1, 45 })]
         [InlineData(-96, new double[] { 00, 101, -5 })]
+        [InlineData(90, new double[] { 45, -45, -0 })]
+        [InlineData(0, new double[] { -45, -45, -0 })]
+        [InlineData(0, new double[] { 45, 45 })]
+        [InlineData(-90, new double[] { -45, 45 })]
+
         public void TestSubtractNumbersFromArrayTheory(double Expected, double[] InputArray)
         {
             double result = Math.Round(SubtractNumbers(InputArray), 2);

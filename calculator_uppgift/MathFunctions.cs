@@ -30,10 +30,10 @@ namespace calculator_uppgift
         }
         public static double SubtractNumbers(double[] InputArray)
         {
-            double result = 0;
-            foreach (double item in InputArray)
+            double result = InputArray[0];
+            for (int i = 1; i <InputArray.Length; i++)
             {
-                result -= item;
+                result -= InputArray[i];
             }
             return Math.Round((result),2);
         }
